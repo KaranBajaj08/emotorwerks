@@ -1,0 +1,64 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void string_compare(char *str1,char *str2){
+    int str1_count=0;
+    int str2_count=0;
+    int greater=0;
+    while(str1[str1_count]){
+        str1_count++;
+    }
+    while(str2[str2_count]){
+        str2_count++;
+    }
+    if(str1_count>str2_count){
+        greater=str1_count;
+    }
+    else{
+        greater=str2_count;
+    }
+
+	// here the bitmap is an array instead of a variable. The output for this is different
+	// This logic does not print repeating characters 
+	// for example - String1 - Karan , String2 - Karan , Output - Karn
+
+    int i,k,character,j;
+    char common[greater];
+    int bitmap[256];
+    i=0;
+    for(i=0;i<str1_count;i++){
+        character=str1[i]-'a'+1;
+        bitmap[character]=1;
+    }
+    k=0;
+    for(j=0;j<str2_count;j++)
+    {
+        character=str2[j]-'a'+1;
+        bitmap[character]++;
+        if(bitmap[character]==2){
+            common[k++]=str2[j];
+        }
+    }
+    common[k]='\0';
+
+
+
+    printf("Str1 is %d str2 is %d",str1_count,str2_count);
+    printf("\n%s",common);
+
+}
+
+//driver code
+
+int main()
+{
+    char str1[50],str2[50];
+    printf("enter string1");
+    gets(str1);
+    printf("enter string2");
+    gets(str2);
+
+    string_compare(str1,str2);
+
+
+}
