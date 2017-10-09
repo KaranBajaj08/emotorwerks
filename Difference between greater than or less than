@@ -1,0 +1,14 @@
+In C, which statement takes less cycles to execute? a) if (i<5) {..} b) if (i>0) {..}
+
+Both the statements will take the same number of instructions 
+
+for example in assembly the above code converts to 
+a)
+1. cmp i,5
+2. jgt LABEL
+
+b)
+1. cmp i,0
+2. jlt LABEL
+
+Since both have the same type of instructions it would take up same number of processing cycles 
